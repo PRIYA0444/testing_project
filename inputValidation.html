@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<meta charset="UTF-8" content="width=device-width,intial-scale=1.0" >
+<style>
+    header
+    {
+        text-align:center;
+        padding:40px;
+    }
+</style>
+</head>
+<body>
+    <header><h2>Numeric Input Validation </h2></header>
+   <div><lebal>Data:</lebal>
+    
+<input type="text" id="data" placeholder="Please enter the data">
+<button onclick="promise_testing()">Submit</button>
+<p id ="result"></p>
+<h4 id ="alert"></h4>
+<script>
+
+function promise_testing()
+{
+    let input=document.getElementById("data").value;
+    let result=document.getElementById("result");
+    let alert=document.getElementById("alert");
+    let prm = new Promise((resolve,reject)=>
+{
+if(/^[0-9]+$/g.test(input)&&(input.trim()!==""))
+{
+    resolve(input);
+}
+else
+{
+    reject(input);
+}
+});
+prm
+.then((massege)=>
+{
+    result.style.color="green"
+    result.textContent=massege;
+    //you cant use console for web browser its for printing on the console 
+    //avoid using console.log() directly on webpage it will not e print 
+     alert.textContent="the input is valid✅";
+    
+})
+.catch((error)=>
+{
+    result.style.color="red"
+    result.textContent=error;
+    alert.textContent="Input is not valid ❌"
+    
+});
+}
+
+</script></div> 
+</body>
+</html>
